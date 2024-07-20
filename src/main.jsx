@@ -1,13 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import Home from "../Components/Home/Home";
+import "./index.css";
+import Home from "./Components/Home/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Activity from "../Components/Activity/Activity";
-import Safety from "../Components/Safety/Safety";
-import About from "../Components/About/About";
-import Contact from "../Components/Contact/Contact";
-import Register from "../Components/Register/Register";
+import Activity from "./Components/Activity/Activity";
+import Safety from "./Components/Safety/Safety";
+import About from "./Components/About/About";
+import Contact from "./Components/Contact/Contact";
+import Register from "./Components/Register/Register";
 
 const router = createBrowserRouter([
   {
