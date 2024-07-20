@@ -20,7 +20,7 @@ const Contact = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(inputValue);
-  }
+  };
 
   return (
     <>
@@ -62,6 +62,7 @@ const Contact = () => {
           value={inputValue.message}
           onChange={handleChange}
         />
+        <br />
         <button>Submit</button>
       </form>
     </>
