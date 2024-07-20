@@ -1,14 +1,15 @@
-import * as React from "react";
+import React, { lazy } from "react";
 import * as ReactDOM from "react-dom/client";
-import "./index.css";
-import Home from "./Components/Home/Home";
+// import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Activity from "./Components/Activity/Activity";
-import Safety from "./Components/Safety/Safety";
-import About from "./Components/About/About";
-import Contact from "./Components/Contact/Contact";
-import Register from "./Components/Register/Register";
+const Home = lazy(() => import("./Components/Home/Home"));
+const Activity = lazy(() => import("./Components/Activity/Activity"));
+const Safety = lazy(() => import("./Components/Safety/Safety"));
+const About = lazy(() => import("./Components/About/About"));
+const Contact = lazy(() => import("./Components/Contact/Contact"));
+const Register = lazy(() => import("./Components/Register/Register"));
+
 
 const router = createBrowserRouter([
   {

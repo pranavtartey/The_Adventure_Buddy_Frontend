@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
+import { Suspense } from "react";
 function App() {
   return (
     <>
       <Navbar />
-      <Outlet />
-      <h1>Hi</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
