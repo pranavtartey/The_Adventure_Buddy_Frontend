@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
-      <div className = {styles.navbar_content}>
+      <div className={styles.navbar_content}>
         <NavLink
           className={(event) => {
             if (!event.isActive) return "underline";
           }}
-          to="/home"
+          to="/"
         >
           Home
         </NavLink>
@@ -51,6 +51,14 @@ const Navbar = () => {
           to="/contact"
         >
           Contact
+        </NavLink>
+        <NavLink
+          className={(event) => {
+            if (event.isActive) return "underline";
+          }}
+          to="/schoolregister"
+        >
+          School Register
         </NavLink>
         <button className="login-button">Login</button>
       </div>

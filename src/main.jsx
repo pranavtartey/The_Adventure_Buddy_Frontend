@@ -9,7 +9,9 @@ const Safety = lazy(() => import("./Components/Safety/Safety"));
 const About = lazy(() => import("./Components/About/About"));
 const Contact = lazy(() => import("./Components/Contact/Contact"));
 const Register = lazy(() => import("./Components/Register/Register"));
-
+const SchoolRegisterForm = lazy(() =>
+  import("./Components/SchoolRegisterForm/SchoolRegisterForm")
+);
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,7 @@ const router = createBrowserRouter([
     errorElement: <p>This is my error element</p>,
     children: [
       {
-        path: "home",
+        index: true,
         element: <Home />,
       },
       {
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "schoolregister",
+        element: <SchoolRegisterForm />,
       },
     ],
   },
