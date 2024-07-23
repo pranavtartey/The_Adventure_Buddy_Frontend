@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom/client";
 // import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
+import CheckDetails from "./Components/CheckDetails/CheckDetails";
 const Home = lazy(() => import("./Components/Home/Home"));
 const Activity = lazy(() => import("./Components/Activity/Activity"));
 const Safety = lazy(() => import("./Components/Safety/Safety"));
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "schoolregister",
         element: <SchoolRegisterForm />,
+      },
+      {
+        path: "check-details",
+        element: <CheckDetails />,
       },
     ],
   },
