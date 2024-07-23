@@ -32,14 +32,14 @@ const Register = () => {
 
   const [schoolData, setSchoolData] = useState(false);
 
-  useEffect(() => {
-    console.log(schoolData == false);
-  }, []);
+  // useEffect(() => {
+  //   console.log(schoolData == false);
+  // }, []);
 
-  const printHandler = (event) => {
-    event.preventDefault();
-    window.print();
-  };
+  // const printHandler = (event) => {
+  //   event.preventDefault();
+  //   window.print();
+  // };
 
   const uniqueCodeHandler = async (event) => {
     event.preventDefault();
@@ -54,8 +54,6 @@ const Register = () => {
       console.log(error);
     }
   };
-
-  const uniqueCodeChangeHandler = (event) => {};
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
@@ -237,7 +235,7 @@ const Register = () => {
             />
             <br />
             <button>Submit</button>
-            <button onClick={printHandler}>Print</button>
+            {/* <button onClick={printHandler}>Print</button> */}
           </form>
         </>
       )}
