@@ -31,41 +31,33 @@ const Register = () => {
   };
 
   const [schoolData, setSchoolData] = useState(false);
-
-  // useEffect(() => {
-  //   console.log(schoolData == false);
-  // }, []);
-
-  // const printHandler = (event) => {
-  //   event.preventDefault();
-  //   window.print();
-  // };
+  const [message, setMessage] = useState("");
 
   const uniqueCodeHandler = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `http://localhost:8080/the_adventure_buddy/public/unique-code`,
+        `http://192.168.2.124:8080/the_adventure_buddy/public/unique-code`,
         { uniqueCode: inputValue.uniqueCode }
       );
       setSchoolData(response.data);
+      console.log("2");
+      console.log(schoolData);
       console.log(response.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler = async (event) => {
     event.preventDefault();
-    const fullData = {
-      schoolDetails: { ...schoolData },
-      studentDetails: { ...inputValue },
-    };
+    console.log(schoolData, inputValue);
     navigate("/check-details", {
-      state: { fullData },
+      state: { ...schoolData, ...inputValue },
     });
-    console.log(fullData);
+    console.log(schoolData._id);
   };
+
 
   return (
     <>
@@ -91,20 +83,16 @@ const Register = () => {
           <div>
             <h1>Your School Details...</h1>
             <b>Name: </b>
-            <span>{schoolData.name}</span>
+            <span>{schoolData.schoolName}</span>
             <br />
             <b>Camp Details: </b>
-            <span>{schoolData.camps[0].name}</span>
+            <span>{schoolData.campName}</span>
             <br />
             <b>Camp Site/Venue: </b>
-            <span>{schoolData.camps[0].venue}</span>
+            <span>{schoolData.campVenue}</span>
             <br />
             <b>Camp Date: </b>
-            <span>
-              {new Date(schoolData.camps[0].date).getDate()}/
-              {new Date(schoolData.camps[0].date).getMonth() + 1}/
-              {new Date(schoolData.camps[0].date).getFullYear()}
-            </span>
+            <span>{schoolData.campDate}</span>
           </div>
           <h1>Register</h1>
           <form onSubmit={formSubmitHandler}>

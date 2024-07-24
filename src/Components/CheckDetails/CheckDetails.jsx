@@ -8,14 +8,34 @@
 // export default CheckDetails;
 
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 const CheckDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const fullData = location.state?.fullData;
-
-  if (!fullData) {
-    return <p>Error: No data provided</p>;
-  }
+  const {
+    schoolName,
+    campName,
+    campVenue,
+    campDate,
+    name,
+    guardianName,
+    section,
+    gender,
+    age,
+    address,
+    city,
+    state,
+    pincode,
+    bloodGroup,
+    dateOfBirth,
+    mobileNumber,
+    adhaarNumber,
+    schoolId,
+    campId,
+  } = location.state;
+  // if (!fullData) {
+  //   return <p>Error: No data provided</p>;
+  // }
 
   const printHandler = () => {
     window.print();
@@ -26,33 +46,55 @@ const CheckDetails = () => {
   const homeHandler = () => {
     navigate("/");
   };
-
+  const saveHandler = async () => {
+    await axios.post(
+      `http://192.168.2.124:8080/the_adventure_buddy/public/${schoolId}/${campId}/register-student`,
+      {
+        name,
+        guardianName,
+        section,
+        gender,
+        age,
+        address,
+        class : location.state.class,
+        city,
+        state,
+        pincode,
+        bloodGroup,
+        dateOfBirth,
+        mobileNumber,
+        adhaarNumber,
+      }
+    );
+  };
+  // console.log(schoolId,campId);
   return (
     <div>
       <h1>Check Details</h1>
       <h2>School Details</h2>
-      <p>Name: {fullData.schoolDetails.name}</p>
-      <p>Camp Details: {fullData.schoolDetails.camps[0].name}</p>
-      <p>Camp Site/Venue: {fullData.schoolDetails.camps[0].venue}</p>
-      <p>
-        Camp Date: {new Date(fullData.schoolDetails.camps[0].date).getDate()}/
-        {new Date(fullData.schoolDetails.camps[0].date).getMonth() + 1}/
-        {new Date(fullData.schoolDetails.camps[0].date).getFullYear()}
-      </p>
+      <p>Name: {schoolName}</p>
+      <p>Camp Details: {campName}</p>
+      <p>Camp Site/Venue: {campVenue}</p>
+      <p>Camp Date: {campDate}</p>
 
       <h2>Student Details</h2>
-      <p>Name: {fullData.studentDetails.name}</p>
-      <p>Guardian Name: {fullData.studentDetails.guardianName}</p>
-      <p>Class: {fullData.studentDetails.class}</p>
-      <p>Section: {fullData.studentDetails.section}</p>
-      <p>Gender: {fullData.studentDetails.gender}</p>
-      <p>Age: {fullData.studentDetails.age}</p>
-      <p>Address: {fullData.studentDetails.address}</p>
-      <p>City: {fullData.studentDetails.city}</p>
-      <p>State: {fullData.studentDetails.state}</p>
-      <p>Pincode: {fullData.studentDetails.pincode}</p>
+      <p>Name: {name}</p>
+      <p>Guardian Name: {guardianName}</p>
+      <p>Class: {location.state.class}</p>
+      <p>Section: {section}</p>
+      <p>Gender: {gender}</p>
+      <p>Age: {age}</p>
+      <p>Blood Group: {bloodGroup}</p>
+      <p>Date of birth: {dateOfBirth}</p>
+      <p>Mobile Number: {mobileNumber}</p>
+      <p>Aadhar Number: {adhaarNumber}</p>
+      <p>Address: {address}</p>
+      <p>City: {city}</p>
+      <p>State: {state}</p>
+      <p>Pincode: {pincode}</p>
       <button onClick={printHandler}>Print</button>
       <button onClick={homeHandler}>Home</button>
+      <button onClick={saveHandler}>Save</button>
     </div>
   );
 };
