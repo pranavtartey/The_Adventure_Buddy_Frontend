@@ -1,12 +1,3 @@
-// import { useLocation } from "react-router-dom";
-
-// const CheckDetails = () => {
-//   const location = useLocation();
-//   return <div>This is your data :{location.state}</div>;
-// };
-
-// export default CheckDetails;
-
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 const CheckDetails = () => {
@@ -56,7 +47,7 @@ const CheckDetails = () => {
         gender,
         age,
         address,
-        class : location.state.class,
+        class: location.state.class,
         city,
         state,
         pincode,
