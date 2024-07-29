@@ -10,6 +10,7 @@ const Safety = lazy(() => import("./Components/Safety/Safety"));
 const About = lazy(() => import("./Components/About/About"));
 const Contact = lazy(() => import("./Components/Contact/Contact"));
 const Register = lazy(() => import("./Components/Register/Register"));
+const LoginForm = lazy(() => import("./Components/LoginForm//LoginForm"));
 const SchoolRegisterForm = lazy(() =>
   import("./Components/SchoolRegisterForm/SchoolRegisterForm")
 );
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "activity",
         element: <Activity />,
+      },
+      {
+        path: "login",
+        element: <LoginForm />,
       },
       {
         path: "register",

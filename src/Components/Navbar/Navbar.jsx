@@ -1,6 +1,13 @@
 import styles from "./Navbar.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const loginHandler = () => {
+    navigate("/login");
+  };
+
   return (
     <div className={styles.navbar}>
       <div className={styles.navbar_content}>
@@ -60,7 +67,9 @@ const Navbar = () => {
         >
           School Register
         </NavLink>
-        <button className="login-button">Login</button>
+        <button onClick={loginHandler} className="login-button">
+          Login
+        </button>
       </div>
     </div>
   );

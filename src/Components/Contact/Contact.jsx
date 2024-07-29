@@ -1,11 +1,14 @@
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     name: "",
-    mobilenumber: "",
     email: "",
-    message: "",
+    mobilenumber: "",
+    query: "",
   });
 
   const handleChange = (event) => {
@@ -17,9 +20,13 @@ const Contact = () => {
     }));
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(inputValue);
+    await axios.post(
+      `http://192.168.2.124:8080/the_adventure_buddy/public/query`,
+      inputValue
+    );
+    setTimeout(navigate("/"), 5000);
   };
 
   return (
@@ -54,12 +61,12 @@ const Contact = () => {
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="message">Message</label>
+        <label htmlFor="query">Message</label>
         <input
           type="text"
-          name="message"
-          id="message"
-          value={inputValue.message}
+          name="query"
+          id="query"
+          value={inputValue.query}
           onChange={handleChange}
         />
         <br />
