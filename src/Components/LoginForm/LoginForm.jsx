@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { SchoolLoginContext } from "../../Context/SchoolLoginContext";
+import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
@@ -35,11 +37,21 @@ const LoginForm = () => {
           withCredentials: true,
         }
       );
-      console.log(response.data);
-      schoolLoginDispatch({ type: "isSchoolLoggedin", payload: true });
+      Cookies.set("SchoolAuthorization", response.data, {
+        expires: 7,
+        secure: true,
+      });
+      console.log(Cookies.get("SchoolAuthorization"));
+      const decodedToken = jwtDecode(Cookies.get("SchoolAuthorization"));
+      console.log(decodedToken);
+      schoolLoginDispatch({
+        type: "isSchoolLoggedin",
+        payload: decodedToken.schoolId,
+      });
       navigate("/school-admin");
     } catch (error) {
       console.log("Something went wrong", error);
+      navigate("/login");
     }
     // console.log(inputValue);
   };

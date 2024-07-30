@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import Navbar from "./Components/Navbar/Navbar";
 import {
   SchoolLoginContext,
@@ -12,10 +13,11 @@ const MainContent = () => {
 
   useEffect(() => {
     const setLoginSession = () => {
-      if (Cookies.get("SchoolAuthorization")) {
+      const token = Cookies.get("SchoolAuthorization");
+      if (token) {
         schoolLoginDispatch({
           type: "isSchoolLoggedin",
-          payload: true,
+          payload: jwtDecode(token)?.schoolId,
         });
       } else {
         schoolLoginDispatch({ type: "isSchoolLoggedin", payload: false });
