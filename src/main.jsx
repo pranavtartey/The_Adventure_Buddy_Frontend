@@ -4,8 +4,13 @@ import axios from "./axiosConfig";
 // import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
+// import AdminHome from "./Components/AdminHome/AdminHome";
+// import AdminLogin from "./Components/AdminLogin/AdminLogin";
+
 // import CheckDetails from "./Components/CheckDetails/CheckDetails";
 // import SchoolAdmin from "./Components/SchoolAdmin/SchoolAdmin";
+const AdminHome = lazy(() => import("./Components/AdminHome/AdminHome"));
+const AdminLogin = lazy(() => import("./Components/AdminLogin/AdminLogin"));
 const CheckDetails = lazy(() =>
   import("./Components/CheckDetails/CheckDetails")
 );
@@ -68,6 +73,14 @@ const router = createBrowserRouter([
       {
         path: "school-admin",
         element: <SchoolAdmin />,
+      },
+      {
+        path: "admin-login",
+        element: <AdminLogin />,
+      },
+      {
+        path: "admin-home",
+        element: <AdminHome />,
       },
     ],
   },

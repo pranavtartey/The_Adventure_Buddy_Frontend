@@ -7,12 +7,14 @@ import {
   SchoolLoginContextProvider,
 } from "./Context/SchoolLoginContext";
 import { Suspense, useContext, useEffect } from "react";
+import { AdminLoginContext, AdminLoginContextProvider } from "./Context/AdminLoginContext";
 
 const MainContent = () => {
   const { schoolLoginDispatch } = useContext(SchoolLoginContext);
+  const { adminLoginState, adminLoginDispatch } = useContext(AdminLoginContext);
 
   useEffect(() => {
-    const setLoginSession = () => {
+    const setSchoolLoginSession = () => {
       const token = Cookies.get("SchoolAuthorization");
       if (token) {
         schoolLoginDispatch({
@@ -23,8 +25,21 @@ const MainContent = () => {
         schoolLoginDispatch({ type: "isSchoolLoggedin", payload: false });
       }
     };
-    setLoginSession();
-  }, [schoolLoginDispatch]);
+    setSchoolLoginSession();
+
+    const setAdminLoginSession = () => {
+      const token = Cookies.get("AdminAuthorization");
+      if (token) {
+        adminLoginDispatch({
+          type: "isAdminLoggedin",
+          payload: jwtDecode(token)?.userId,
+        });
+      } else {
+        adminLoginDispatch({ type: "isAdminLoggedin", payload: false });
+      }
+    };
+    setAdminLoginSession();
+  }, [schoolLoginDispatch, adminLoginDispatch]);
 
   return (
     <>
@@ -39,9 +54,11 @@ const MainContent = () => {
 function App() {
   return (
     <>
-      <SchoolLoginContextProvider>
-        <MainContent />
-      </SchoolLoginContextProvider>
+      <AdminLoginContextProvider>
+        <SchoolLoginContextProvider>
+          <MainContent />
+        </SchoolLoginContextProvider>
+      </AdminLoginContextProvider>
     </>
   );
 }
