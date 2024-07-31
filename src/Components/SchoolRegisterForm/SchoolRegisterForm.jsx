@@ -1,13 +1,17 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SchoolRegisterForm = () => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     name: "",
     address: "",
     state: "",
     city: "",
-    password: "",
     pincode: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (event) => {
@@ -24,14 +28,20 @@ const SchoolRegisterForm = () => {
   //     window.print();
   //   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(inputValue);
+    const response = await axios.post(
+      `http://localhost:8080/the_adventure_buddy/public/create-school`,
+      inputValue,
+      { withCredentials: true }
+    );
+    console.log(response.data.message);
+    navigate("/login");
   };
 
   return (
     <>
-      <h1>Register</h1>
+      <h1>School Register</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="name">Name</label>
         <input

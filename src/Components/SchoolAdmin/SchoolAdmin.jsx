@@ -32,11 +32,11 @@ const SchoolAdmin = () => {
       <b>Registered Email : </b> <span>{schoolData.email}</span>
       <br />
       <b>Upcoming Camps : </b>{" "}
-      {schoolData.camps.length ? (
-        <span>{schoolData.camps[0].name}</span>
-      ) : (
+      {/* {schoolData.camps === '0' ? (
         <span>No camps to show.</span>
-      )}
+      ) : (
+        <span>{schoolData.camps[0].name}</span>
+      )} */}
     </>
   ) : (
     <p>You are not authorized to visit this page.</p>
