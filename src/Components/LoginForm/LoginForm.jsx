@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { SchoolLoginContext } from "../../Context/SchoolLoginContext";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-
+import styles from "./LoginForm.module.css"
 const LoginForm = () => {
   const { schoolLoginState, schoolLoginDispatch } =
     useContext(SchoolLoginContext);
@@ -57,27 +57,39 @@ const LoginForm = () => {
   };
   return (
     <>
-      <form onSubmit={submitHandler}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={inputValue.email}
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={inputValue.password}
-          onChange={handleChange}
-        />
-        <br />
-        <button>Submit</button>
-      </form>
+      <div className={styles.formContainer}>
+        <div className={styles.cont}>
+         <div  className={styles.fr}>
+         <form onSubmit={submitHandler}>
+          <div className={styles.mail}>
+        <span>login</span>
+          <label  htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={inputValue.email}
+            onChange={handleChange}
+          />
+          </div>
+          <br />
+          <div className={styles.pass}>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={inputValue.password}
+            onChange={handleChange}
+          />
+          </div>
+          <br />
+          <div className={styles.submitCont}>
+          <button className={styles.submit}>Submit</button>
+          </div>
+        </form></div>
+         </div>
+      </div>
     </>
   );
 };
