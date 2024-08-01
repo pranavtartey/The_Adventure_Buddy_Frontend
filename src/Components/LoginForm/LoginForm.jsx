@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import loginImage from "./login.png"
 import { SchoolLoginContext } from "../../Context/SchoolLoginContext";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -59,36 +60,40 @@ const LoginForm = () => {
     <>
       <div className={styles.formContainer}>
         <div className={styles.cont}>
-         <div  className={styles.fr}>
-         <form onSubmit={submitHandler}>
-          <div className={styles.mail}>
-        <span>login</span>
-          <label  htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={inputValue.email}
-            onChange={handleChange}
-          />
-          </div>
-          <br />
-          <div className={styles.pass}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={inputValue.password}
-            onChange={handleChange}
-          />
-          </div>
-          <br />
-          <div className={styles.submitCont}>
-          <button className={styles.submit}>Submit</button>
-          </div>
-        </form></div>
-         </div>
+          <span>Welcome School!</span>
+          <img src={loginImage} alt="" />
+          <form className={styles.fr} onSubmit={submitHandler}>
+
+            <div className={styles.mail}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={inputValue.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styles.pass}>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                value={inputValue.password}
+                onChange={handleChange}
+              />
+
+            </div>
+
+
+
+
+            <div className={styles.submitCont}>
+              <button className={styles.submit}>Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
