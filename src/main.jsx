@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import * as ReactDOM from "react-dom/client";
 import axios from "./axiosConfig";
-// import "./index.css";
+import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 // import AdminHome from "./Components/AdminHome/AdminHome";
