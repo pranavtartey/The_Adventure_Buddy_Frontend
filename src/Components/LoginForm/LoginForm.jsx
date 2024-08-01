@@ -60,7 +60,7 @@ const LoginForm = () => {
     <>
       <div className={styles.formContainer}>
         <div className={styles.cont}>
-          <span>Welcome School!</span>
+          <span>Welcome Back</span>
           <img src={loginImage} alt="" />
           <form className={styles.fr} onSubmit={submitHandler}>
 
