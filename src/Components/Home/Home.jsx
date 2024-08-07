@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LinkCard from "./LinkCard";
 
 const Home = () => {
   return (
@@ -21,15 +22,15 @@ const Home = () => {
       Adventure Activities
       <h2>What We Offering?</h2>
       <h1>Our Activities</h1>
-      <Link>School Camps</Link>
-      <Link>Outdoor Camps</Link>
-      <Link>Adventure Activities</Link>
+      <LinkCard>School Camps</LinkCard>
+      <LinkCard>Outdoor Camps</LinkCard>
+      <LinkCard>Adventure Activities</LinkCard>
       <h3>leading with</h3>
       <h1>SAFETY</h1>
       <h3>in mind</h3>
-      <Link>Professional Trainer</Link>
-      <Link>Accilives</Link>
-      <Link>Certified Equipments</Link>
+      <LinkCard>Professional Trainer</LinkCard>
+      <LinkCard>Accilives</LinkCard>
+      <LinkCard>Certified Equipments</LinkCard>
       <h2>Let's Begin</h2>
       <h1>The Adventure...</h1>
       <Link>Linktree</Link>
