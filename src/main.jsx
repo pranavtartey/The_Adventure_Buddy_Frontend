@@ -1,21 +1,23 @@
+// import AdminHome from "./Components/AdminHome/AdminHome";
+// import AdminLogin from "./Components/AdminLogin/AdminLogin";
+
+// import CheckDetails from "./Components/CheckDetails/CheckDetails";
+// import SchoolAdmin from "./Components/SchoolAdmin/SchoolAdmin";
+// const AdminHome = lazy(() => import("./Components/AdminHome/AdminHome"));
 import React, { lazy } from "react";
 import * as ReactDOM from "react-dom/client";
 import axios from "./axiosConfig";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-// import AdminHome from "./Components/AdminHome/AdminHome";
-// import AdminLogin from "./Components/AdminLogin/AdminLogin";
-
-// import CheckDetails from "./Components/CheckDetails/CheckDetails";
-// import SchoolAdmin from "./Components/SchoolAdmin/SchoolAdmin";
-const AdminHome = lazy(() => import("./Components/AdminHome/AdminHome"));
+import SchoolUniqueIdFrom from "./Components/SchoolRegisterForm/SchoolUniqueIdForm/SchoolUniqueIdForm";
+const Home = lazy(() => import("./Components/Home/Home"));
+import AdminHome from "./Components/AdminHome/AdminHome";
 const AdminLogin = lazy(() => import("./Components/AdminLogin/AdminLogin"));
 const CheckDetails = lazy(() =>
   import("./Components/CheckDetails/CheckDetails")
 );
 const SchoolAdmin = lazy(() => import("./Components/SchoolAdmin/SchoolAdmin"));
-const Home = lazy(() => import("./Components/Home/Home"));
 const Activity = lazy(() => import("./Components/Activity/Activity"));
 const Safety = lazy(() => import("./Components/Safety/Safety"));
 const About = lazy(() => import("./Components/About/About"));
@@ -43,10 +45,6 @@ const router = createBrowserRouter([
         element: <Activity />,
       },
       {
-        path: "login",
-        element: <LoginForm />,
-      },
-      {
         path: "register",
         element: <StudentRegister />,
       },
@@ -63,16 +61,24 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "schoolregister",
-        element: <SchoolRegisterForm />,
+        path: "school-unique-id-form",
+        element: <SchoolUniqueIdFrom />,
       },
       {
-        path: "check-details",
-        element: <CheckDetails />,
+        path: "login",
+        element: <LoginForm />,
+      },
+      {
+        path: "school-register",
+        element: <SchoolRegisterForm />,
       },
       {
         path: "school-admin",
         element: <SchoolAdmin />,
+      },
+      {
+        path: "check-details",
+        element: <CheckDetails />,
       },
       {
         path: "admin-login",

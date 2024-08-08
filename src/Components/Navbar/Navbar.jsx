@@ -79,7 +79,7 @@ const Navbar = () => {
           className={(event) => {
             if (event.isActive) return "underline";
           }}
-          to="/schoolregister"
+          to="/school-register"
         >
           School Register
         </NavLink>

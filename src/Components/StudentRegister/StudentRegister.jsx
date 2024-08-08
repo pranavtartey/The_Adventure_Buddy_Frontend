@@ -37,7 +37,7 @@ const Register = () => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `http://192.168.2.124:8080/the_adventure_buddy/public/unique-code`,
+        `http://localhost:8080/the_adventure_buddy/public/unique-code`,
         { uniqueCode: inputValue.uniqueCode }
       );
       setSchoolData(response.data);

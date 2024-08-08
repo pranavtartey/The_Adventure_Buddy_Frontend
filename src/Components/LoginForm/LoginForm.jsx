@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import loginImage from "./login.png"
+import loginImage from "./login.png";
 import { SchoolLoginContext } from "../../Context/SchoolLoginContext";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom";
-import styles from "./LoginForm.module.css"
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./LoginForm.module.css";
 const LoginForm = () => {
   const { schoolLoginState, schoolLoginDispatch } =
     useContext(SchoolLoginContext);
@@ -63,7 +63,6 @@ const LoginForm = () => {
           <span>Welcome Back</span>
           <img src={loginImage} alt="" />
           <form className={styles.fr} onSubmit={submitHandler}>
-
             <div className={styles.mail}>
               <label htmlFor="email">Email</label>
               <input
@@ -83,15 +82,14 @@ const LoginForm = () => {
                 value={inputValue.password}
                 onChange={handleChange}
               />
-
             </div>
-
-
-
 
             <div className={styles.submitCont}>
               <button className={styles.submit}>Submit</button>
             </div>
+            <Link to="/school-register" className="text-blue-500">
+              Don't have an account?
+            </Link>
           </form>
         </div>
       </div>
