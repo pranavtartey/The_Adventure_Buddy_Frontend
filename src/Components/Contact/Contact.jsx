@@ -27,7 +27,7 @@ const Contact = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
     await axios.post(
-      `http://192.168.2.124:8080/the_adventure_buddy/public/query`,
+      `http://localhost:8080/the_adventure_buddy/public/query`,
       inputValue
     );
     setTimeout(navigate("/"), 5000);
