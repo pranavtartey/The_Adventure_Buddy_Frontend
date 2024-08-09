@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import loginImage from "./login.png";
+import loginImage from "./login1.png"
 import { SchoolLoginContext } from "../../Context/SchoolLoginContext";
 import { jwtDecode } from "jwt-decode";
-import { Link, useNavigate } from "react-router-dom";
-import styles from "./LoginForm.module.css";
+import { useNavigate } from "react-router-dom";
+import styles from "./LoginForm.module.css"
 const LoginForm = () => {
   const { schoolLoginState, schoolLoginDispatch } =
     useContext(SchoolLoginContext);
@@ -58,40 +58,47 @@ const LoginForm = () => {
   };
   return (
     <>
-      <div className={styles.formContainer}>
-        <div className={styles.cont}>
-          <span>Welcome Back</span>
-          <img src={loginImage} alt="" />
-          <form className={styles.fr} onSubmit={submitHandler}>
-            <div className={styles.mail}>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={inputValue.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className={styles.pass}>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={inputValue.password}
-                onChange={handleChange}
-              />
-            </div>
+      <div className="flex justify-center items-center flex-col gap-3">
+        <h1 className="text-customColor text-4xl sm:text-6xl font-semibold">Welcome Back</h1>
+        <h4 className="text-base text-greycolor sm:text-1xl font-medium">YOUR ADVENTURE START HERE</h4>
+      </div>
+      <div className="w-full flex flex-col justify-around lg:flex-row p-5  " >
+        <div className="   flex justify-around items-start  mt-5  mt-0">
 
-            <div className={styles.submitCont}>
-              <button className={styles.submit}>Submit</button>
-            </div>
-            <Link to="/school-register" className="text-blue-500">
-              Don't have an account?
-            </Link>
-          </form>
+          <img src={loginImage} alt="" />
         </div>
+        <form className="mt-20  lg:w-2/5 " onSubmit={submitHandler}>
+
+
+          <div className="mb-5">
+            <label className="font-medium text-sm" htmlFor="email">Email</label>
+            <input
+              className="w-full h-8 outline-none rounded-lg px-2 drop-shadow-xl bg-contactBorderBg border-2 border-solid border-customColor"
+              type="email"
+              name="email"
+              id="email"
+              value={inputValue.email}
+              onChange={handleChange}
+            />
+          </div>
+
+
+          <div className=" mb-5">
+            <label className="font-medium text-sm" htmlFor="password">Password</label>
+            <input
+              className="w-full h-8 outline-none rounded-lg px-2 drop-shadow-xl bg-contactBorderBg border-2 border-solid border-customColor"
+              type="password"
+              name="password"
+              id="password"
+              value={inputValue.password}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div >
+            <button className="w-full h-8 rounded-lg focus:ring-white bg-blue-500 text-white text-sm">Submit</button>
+          </div>
+        </form>
       </div>
     </>
   );
